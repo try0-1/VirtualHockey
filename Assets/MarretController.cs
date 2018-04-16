@@ -5,11 +5,14 @@ using UnityEngine;
 public class MarretController : MonoBehaviour {
     public Vector3 acceleration;//加速度
     public float m_speed;
+    public Vector3 initPos;
+    public GameObject Tracker;
 
     Vector3 currentPos;
 	// Use this for initialization
 	void Start () {
         currentPos = this.gameObject.transform.position;
+        initSet();
     }
 	
 	// Update is called once per frame
@@ -17,7 +20,12 @@ public class MarretController : MonoBehaviour {
             m_speed=((this.gameObject.transform.position-currentPos)/Time.deltaTime).magnitude;
             acceleration = (this.gameObject.transform.position - currentPos) ;
             currentPos = this.gameObject.transform.position;
+
+        Vector3 tmp = Tracker.transform.position;
+        tmp *= 10;
+        this.gameObject.transform.position = tmp;
     }
+
     /// <summary>
     /// ここからドラッグ
     /// </summary>
@@ -55,5 +63,9 @@ public class MarretController : MonoBehaviour {
 
         //オブジェクトの位置を変更する
         transform.position = currentPosition;
+    }
+    public void initSet()
+    {
+        initPos = this.gameObject.transform.position;
     }
 }

@@ -20,7 +20,9 @@ public class PackControll : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Marret")
         {
+            
             rb.AddForce(collision.gameObject.GetComponent<MarretController>().acceleration *collision.gameObject.GetComponent<MarretController>().m_speed*speed);
+            Debug.Log("Hit");
         }
     }
 }
